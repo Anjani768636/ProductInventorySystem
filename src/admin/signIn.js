@@ -1,6 +1,6 @@
 import React from 'react';
 import login from './login.jpeg';
-import breakfast from './breakfast.jpg'
+
 import { Link } from 'react-router-dom';
 
 
