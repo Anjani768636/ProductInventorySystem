@@ -1,0 +1,39 @@
+{
+	"arrayOfProducts": [
+		{
+		  "productId":1,
+			"imgUrl": "https://www.idgcdn.com.au/products/image/12673/angle/8/415x415/345908/",
+			"name": "Nokia 8 Sirocco",
+			"category": "Electronics",
+			"price": 36999
+		},
+		{
+		  "productId":2,
+			"imgUrl": "https://guesseu.scene7.com/is/image/GuessEU/FLGLO4FAL12-BEIBR?wid=700&amp;fmt=jpeg&amp;qlt=80&amp;op_sharpen=0&amp;op_usm=1.0,1.0,5,0&amp;iccEmbed=0",
+			"name": "GLORIA HIGH LOGO SNEAKER",
+			"category": "Fashion",
+			"price": 918
+		},
+		{
+		  "productId":3,
+			"imgUrl": "https://guesseu.scene7.com/is/image/GuessEU/HWVG6216060-TAN?wid=700&amp;fmt=jpeg&amp;qlt=80&amp;op_sharpen=0&amp;op_usm=1.0,1.0,5,0&amp;iccEmbed=0",
+			"name": "CATE RIGID BAG",
+			"category": "Baggage",
+			"price": 440.5
+		},
+		{
+		  "productId":4,
+			"imgUrl": "http://guesseu.scene7.com/is/image/GuessEU/WC0001FMSWC-G5?wid=520&fmt=jpeg&qlt=80&op_sharpen=0&op_usm=1.0,1.0,5,0&iccEmbed=0",
+			"name": "GUESS CONNECT WATCH",
+			"category": "Electronics",
+			"price": 438.9
+		},
+		{
+		  "productId":5,
+			"imgUrl": "https://guesseu.scene7.com/is/image/GuessEU/AW6308VIS03-SAP?wid=700&amp;fmt=jpeg&amp;qlt=80&amp;op_sharpen=0&amp;op_usm=1.0,1.0,5,0&amp;iccEmbed=0",
+			"name": "'70s RETRO GLAM KEFIAH",
+			"category": "Apparel",
+			"price": 204
+		}
+	]
+}

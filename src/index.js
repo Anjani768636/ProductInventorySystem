@@ -1,13 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './App'
+import {HashRouter} from 'react-router-dom'
 
 
 import './index.css';
-import RootComponent from './admin/RootComponent';
 
 ReactDOM.render(
+                <HashRouter>
+                  <App/>
+                </HashRouter>
+                  
                 
-                  <RootComponent></RootComponent>
                 
          
          ,

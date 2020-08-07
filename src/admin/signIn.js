@@ -1,11 +1,16 @@
 import React from 'react';
+import login from './login.jpeg';
+import breakfast from './breakfast.jpg'
+import { Link } from 'react-router-dom';
 
-import './signIn.css';
+
 class SignIn extends React.Component {
 
     render() { 
         return ( 
-            <div class="login-wrap">
+            
+            <div className="login-wrap" style={{ backgroundImage: `url(${breakfast})` }}>
+               
             <div class="login-html">
                 <label class="tab">Sign In</label>
                 <div class="login-form">
@@ -24,8 +29,9 @@ class SignIn extends React.Component {
                         <div class="hr"></div>
                         <div class="foot-lnk">
                             <a href="#forgot">Forgot Password?</a>
+                          
+                              <Link to='/signUp'>Don't have an account?</Link>
                            
-                            <a href="#forgot">Don't have an account?</a>
                         </div>
                     </div>
                 </div>
