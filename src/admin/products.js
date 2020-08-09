@@ -1,16 +1,22 @@
 import React from 'react';
 import  axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import './products.css';
+import ProductDetails from './productdetails';
 
 class Products extends React.Component {
     
     state={
-        emp:[]
+        searchtext:"",
+        viewProductClicked:false,
+        viewproductId:0,
+        emp:[],
+        temp:[]
     }
 
     componentDidMount(){
+       
         this.getProducts();
     }
     getProducts(){
@@ -18,14 +24,36 @@ class Products extends React.Component {
             .then((response)=>{
                 console.log(response)
                 console.log(response.data)
-                this.setState({emp: response.data})
+                this.setState({emp: response.data,temp:response.data})
+                
                 console.log(this.state.emp)
             }, (error)=>{
                 console.log(error)
             })
     }
 
+
+    searchHandle(event){
+        this.setState({searchtext:event.target.value})
+    }
+    searchSubmit(event){
+        console.log("inside searchtext")
+        const products=this.state.temp.filter(p=>p.name.toLowerCase().includes(this.state.searchtext.toLowerCase()))
+        this.setState({emp:products})
+    }
+    viewProduct(event){
+        console.log(event.target.id)
+        this.setState({viewProductClicked:true, viewproductId:event.target.id})
+        // return <ProductDetails/>
+    }
+
+
     render() { 
+        if(this.state.viewProductClicked){
+            this.setState({viewProductClicked:false})
+            // return <ProductDetails/>
+            return <Redirect to ={{pathname:"/productdetails",state:{id:this.state.viewproductId}}}></Redirect>
+        }
         return ( 
             <div>
           <div>  
@@ -40,11 +68,11 @@ class Products extends React.Component {
         <form>
             <div>
             <label class="scts">Search:</label>
-                    <input type="text"/>
+                    <input type="text" onChange={this.searchHandle.bind(this)}/>
                 </div>   
               
                     <div class="scts">
-                        <button class="button" style={{marginLeft:"50px"}}>Search</button>
+                        <button class="button" onClick={this.searchSubmit.bind(this)}style={{marginLeft:"50px"}}>Search</button>
                     </div>
             
           </form>
@@ -56,7 +84,7 @@ class Products extends React.Component {
         <div class="card" style={{marginRight:"10px",width:"300px"}}>
         {/* <img src="plusicon.png" alt="Denim Jeans" style="width:100%"/> */}
         <p>Add Product.</p>
-        <button class="button">Add Product</button>
+        <button class="button" >Add Product</button>
         </div>
         
         {this.state.emp.map(p=>(
@@ -64,7 +92,8 @@ class Products extends React.Component {
         <div className="card" style={{marginRight:"10px"}}>
          <img src={p.imgUrl} alt={p.name} style={{width:"100%"}}/> 
         <p>{p.name} Rs: {p.price}</p>
-        <button className="button">View Product</button>
+        <button className="button" onClick={this.viewProduct.bind(this)} id={p.productId}>View Product</button>
+
         </div>
 
         ))
