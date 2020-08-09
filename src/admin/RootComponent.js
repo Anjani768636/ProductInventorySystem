@@ -4,6 +4,7 @@ import SignUp from './signUp';
 import Products from './products';
 import ProductDetails from './productdetails';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import AddProduct from './addproducts';
 class RootComponent extends React.Component {
     state={ }
     render(){
@@ -13,7 +14,8 @@ class RootComponent extends React.Component {
                <Route exact path="/" component={()=><SignIn/>} ></Route> 
                <Route path='/signUp' component={()=><SignUp/>}></Route> 
                <Route path='/products' component={()=><Products/>}></Route> 
-               <Route path='/productdetails' component={()=><ProductDetails/>}></Route>  
+               <Route path='/productdetails' component={()=><ProductDetails/>}></Route> 
+               <Route path='/addproducts' component={()=><AddProduct/>}></Route>   
                </Switch>  
             </div>
         );

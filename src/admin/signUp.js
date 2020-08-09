@@ -1,10 +1,11 @@
 import React from 'react';
-
+import login from './login.jpeg';
 import './signIn.css';
 class SignUp extends React.Component {
 
     render() { 
         return ( 
+			<div className="bg" style={{ backgroundImage: `url(${login})`}}>
             <div className="login-wrap">
 	<div className="login-html">
 		<label className="tab">Sign Up</label>
@@ -29,6 +30,7 @@ class SignUp extends React.Component {
 			</div>
 			</div>
 		</div>
+	</div>
 	</div>
          );
     }

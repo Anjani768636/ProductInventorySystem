@@ -1,0 +1,33 @@
+
+ .main-block{
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 15px;
+    display: flex;
+
+  }
+
+  .part-one{
+    width: 60%;
+    
+    margin-right: 100px;
+   
+  }
+  .part-two{
+    width: 40%;
+    position: relative;
+    margin-left: 100px;
+  }
+
+  .button {
+    background-color:black;
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer; 
+  }

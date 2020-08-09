@@ -9,8 +9,10 @@ class Products extends React.Component {
     
     state={
         searchtext:"",
+
         viewProductClicked:false,
         viewproductId:0,
+        addProductClicked:false,
         emp:[],
         temp:[]
     }
@@ -25,7 +27,6 @@ class Products extends React.Component {
                 console.log(response)
                 console.log(response.data)
                 this.setState({emp: response.data,temp:response.data})
-                
                 console.log(this.state.emp)
             }, (error)=>{
                 console.log(error)
@@ -42,21 +43,48 @@ class Products extends React.Component {
         const products=this.state.temp.filter(p=>p.name.toLowerCase().includes(this.state.searchtext.toLowerCase()))
         this.setState({emp:products})
     }
+
     viewProduct(event){
         console.log(event.target.id)
         this.setState({viewProductClicked:true, viewproductId:event.target.id})
+
         localStorage.setItem("id",event.target.id)
         // return <ProductDetails/>
         //const pid=event.target.id;
         //return <Redirect to ={{pathname:"/productdetails",state:{pid}}}></Redirect>
     }
+    addProduct(event){ 
+    //     console.log('Add Product via axios and post')
+    // let productRequestBody = {
+    //     "name": this.state.name,
+    //     "since": this.state.friendsince,
+    //     "friendimage":this.state.friendimage
+    // }
+    // axios.post('http://localhost:3000/allfriends', productRequestBody)
+    //         .then(response=>{
+    //             console.log(response);
+    //             this.props.history.push('/')
+    //         }, error=>{
+    //             console.error(error);
+    //         })
+    this.setState({addProductClicked:true})
+    
+}
 
 
     render() { 
+        if(this.state.addProductClicked){
+            this.setState({addProductClicked:false})
+            return <Redirect push to="/addproducts" />;
+        }
         if(this.state.viewProductClicked){
             this.setState({viewProductClicked:false})
             // return <ProductDetails/>
-             return <Redirect to ={{pathname:"/productdetails",state:{id:this.state.viewproductId}}}></Redirect>
+            console.log("problem")
+            console.log(this.state.viewproductId)
+            const tempId=this.state.viewproductId;
+            //return <Redirect push to="/productdetails" />;
+             return <Redirect to ={{pathname:"/productdetails",state:{id:tempId}}}></Redirect>
         }
         return ( 
             <div>
@@ -82,26 +110,35 @@ class Products extends React.Component {
         </div>
 
         </div>
-
         <div className="container">
+        <div className="cards">
   
-        <div className="card" style={{marginRight:"10px",width:"300px"}}>
-        {/* <img src="plusicon.png" alt="Denim Jeans" style="width:100%"/> */}
+        <div className="card" style={{marginRight:"10px"}}>
+        <img src="" alt="Add Product"/> 
+        <p>Click Here To</p>
         <p>Add Product.</p>
-        <button className="button" >Add Product</button>
+        <button className="button" onClick={this.addProduct.bind(this)}>Add Product</button>
         </div>
         
         {this.state.emp.map(p=>(
          
         <div className="card" style={{marginRight:"10px"}}>
-         <img src={p.imgUrl} alt={p.name} style={{width:"100%"}}/> 
+            <div style={{height:"70%"}}>
+         <img src={p.imgUrl} alt={p.name} style={{height:"70%",width:"100%"}}/> 
+         </div>
+         <div>
         <p>{p.name} Rs: {p.price}</p>
         <button className="button" onClick={this.viewProduct.bind(this)} id={p.productId}>View Product</button>
-
+        {/* <button className="button" >Edit</button>
+        <button className="button" >Delete</button> */}
+         </div>
         </div>
+        
 
         ))
+        
     }
+    </div>
 
         
       
