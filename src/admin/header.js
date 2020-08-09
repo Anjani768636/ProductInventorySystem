@@ -9,8 +9,8 @@ class Header extends React.Component {
             <div className="header">
                
                 <Link to='/products'>Products</Link>
-                <div class="header-right">
-                <a class="active" href="#home">Dashboard</a>
+                <div className="header-right">
+                <a href="#home">Dashboard</a>
                 <a href="#contact">Logout</a>
             </div>
     </div>

@@ -33,6 +33,7 @@ class Products extends React.Component {
     }
 
 
+
     searchHandle(event){
         this.setState({searchtext:event.target.value})
     }
@@ -44,7 +45,10 @@ class Products extends React.Component {
     viewProduct(event){
         console.log(event.target.id)
         this.setState({viewProductClicked:true, viewproductId:event.target.id})
+        localStorage.setItem("id",event.target.id)
         // return <ProductDetails/>
+        //const pid=event.target.id;
+        //return <Redirect to ={{pathname:"/productdetails",state:{pid}}}></Redirect>
     }
 
 
@@ -52,39 +56,39 @@ class Products extends React.Component {
         if(this.state.viewProductClicked){
             this.setState({viewProductClicked:false})
             // return <ProductDetails/>
-            return <Redirect to ={{pathname:"/productdetails",state:{id:this.state.viewproductId}}}></Redirect>
+             return <Redirect to ={{pathname:"/productdetails",state:{id:this.state.viewproductId}}}></Redirect>
         }
         return ( 
             <div>
-          <div>  
+              <div>
+
             <div>
-            <label class="sct">Select Category:</label>
-            <select name="category" style={{width:"200px"}}>
+                <label className="sct">Select Category:</label>
+                <select name="category" style={{width:"200px"}}>
                 <option>--Select--</option>
-            </select>
+                </select>
            </div>
         
         <div>
-        <form>
-            <div>
-            <label class="scts">Search:</label>
+          <form>
+                <div>
+                    <label className="scts">Search:</label>
                     <input type="text" onChange={this.searchHandle.bind(this)}/>
                 </div>   
-              
-                    <div class="scts">
-                        <button class="button" onClick={this.searchSubmit.bind(this)}style={{marginLeft:"50px"}}>Search</button>
-                    </div>
-            
+                    <div className="scts">
+                        <button className="button" onClick={this.searchSubmit.bind(this)}style={{marginLeft:"50px"}}>Search</button>
+                    </div>  
           </form>
-         
         </div>
+
         </div>
-        <div class="container">
+
+        <div className="container">
   
-        <div class="card" style={{marginRight:"10px",width:"300px"}}>
+        <div className="card" style={{marginRight:"10px",width:"300px"}}>
         {/* <img src="plusicon.png" alt="Denim Jeans" style="width:100%"/> */}
         <p>Add Product.</p>
-        <button class="button" >Add Product</button>
+        <button className="button" >Add Product</button>
         </div>
         
         {this.state.emp.map(p=>(
