@@ -107,20 +107,20 @@ class AddProduct extends React.Component {
                        <h2>Product Details:</h2>
        
                        <div>
-                           <label>*Select Category:</label>
+                           <label>Select Category:</label>
                            <select name="category" style={{width:"200px"}}>
                                <option>--Select--</option>
                            </select>
                        </div>
                       
                        <div>
-                           <label>Add Category:</label>
+                           <label>*Add Category:</label>
                            <input type="text" id="category" onChange={this.getCategory}/>
                            <button className="button">Add</button>
                        </div>
 
                        <div>
-                           <label>Product ID:</label>
+                           <label>*Product ID:</label>
                            <input type="number" id="productID" onChange={this.getID}/>
                        </div>
                       
@@ -148,7 +148,7 @@ class AddProduct extends React.Component {
                        </div>
                        
                        <div>
-                           <label>Quantity:</label>
+                           <label>*Quantity:</label>
                            <input type="text" onChange={this.getQty}/>
                        </div>
                       
