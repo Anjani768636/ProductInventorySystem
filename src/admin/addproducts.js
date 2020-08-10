@@ -14,6 +14,8 @@ class AddProduct extends React.Component {
             price:0.0,
             imgUrl:'',
             category:'',
+            qty:0,
+            success:false,
             buttonStatus: false
         }
     
@@ -50,6 +52,13 @@ class AddProduct extends React.Component {
         this.setState({price: event.target.value})
     }
 
+    getQty=(event)=>{
+        console.log(event)
+        console.log(event.target)
+        console.log(event.target.value)
+        this.setState({qty: event.target.value})
+    }
+
     getID=(event)=>{
         console.log(event)
         console.log(event.target)
@@ -65,13 +74,15 @@ class AddProduct extends React.Component {
             "name": this.state.name,
             "price": this.state.price,
             "imgUrl":this.state.imgUrl,
-            "category":this.state.category
+            "category":this.state.category,
+            "qty":this.state.qty
             
         }
         console.log(productRequestBody)
         Axios.post('http://localhost:3000/arrayOfProducts', productRequestBody)
                 .then(response=>{
                     console.log(response);
+                    this.setState({success:true})
                     
                 }, error=>{
                     console.error(error);
@@ -80,6 +91,11 @@ class AddProduct extends React.Component {
     }
 
     render() { 
+        if(this.state.success)
+        {
+            this.setState({success:false})
+            return (<Redirect to={{pathname:"/products"}}></Redirect>)
+        }
         return ( 
             <div className="main-block">
         
@@ -133,7 +149,7 @@ class AddProduct extends React.Component {
                        
                        <div>
                            <label>Quantity:</label>
-                           <input type="text"/>
+                           <input type="text" onChange={this.getQty}/>
                        </div>
                       
                        <div>

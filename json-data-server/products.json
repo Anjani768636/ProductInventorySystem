@@ -1,31 +1,13 @@
 {
   "arrayOfProducts": [
     {
-      "name": "Nokia 8 Sirocco",
-      "price": "36998",
-      "imgUrl": "https://www.idgcdn.com.au/products/image/12673/angle/8/415x415/345908/",
-      "productId": 1,
-      "category": "Electronics",
-      "id": "1",
-      "qty":5
-    },
-    {
-      "name": "GLORIA HIGH-LOGO SNEAKER",
-      "price": "919",
-      "imgUrl": "https://guesseu.scene7.com/is/image/GuessEU/FLGLO4FAL12-BEIBR?wid=700&amp;fmt=jpeg&amp;qlt=80&amp;op_sharpen=0&amp;op_usm=1.0,1.0,5,0&amp;iccEmbed=0",
-      "productId": 2,
-      "category": "Fashion",
-      "id": "2",
-      "qty":4
-    },
-    {
       "productId": 3,
       "imgUrl": "https://guesseu.scene7.com/is/image/GuessEU/HWVG6216060-TAN?wid=700&amp;fmt=jpeg&amp;qlt=80&amp;op_sharpen=0&amp;op_usm=1.0,1.0,5,0&amp;iccEmbed=0",
       "name": "CATE RIGID BAG",
       "category": "Baggage",
       "price": 440.5,
       "id": "3",
-      "qty":3
+      "qty": 3
     },
     {
       "productId": 4,
@@ -34,7 +16,7 @@
       "category": "Electronics",
       "price": 438.9,
       "id": "4",
-      "qty":2
+      "qty": 2
     },
     {
       "name": "'80s RETRO GLAM KEFIAH",
@@ -43,13 +25,22 @@
       "productId": 5,
       "category": "Apparel",
       "id": "5",
-      "qty":1
+      "qty": 1
+    },
+    {
+      "name": "Nokia 8 Sirocco",
+      "price": "36999",
+      "imgUrl": "https://www.idgcdn.com.au/products/image/12673/angle/8/415x415/345908/",
+      "productId": "10",
+      "category": "Electronics",
+      "qty": "4",
+      "id": "10"
     }
   ],
-  "login":[
+  "login": [
     {
-      "user":"admin",
-      "password":"12345"
+      "user": "admin",
+      "password": "12345"
     }
   ]
 }

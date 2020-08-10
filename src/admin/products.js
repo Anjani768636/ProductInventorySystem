@@ -115,6 +115,7 @@ class Products extends React.Component {
          </div>
          <div>
         <p>{p.name} Rs: {p.price}</p>
+        <p>Qty: {p.qty}</p>
         <button className="button" onClick={this.viewProduct.bind(this)} id={p.productId}>View Product</button>
          </div>
         </div>

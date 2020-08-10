@@ -1,7 +1,7 @@
 import React from 'react';
 import './productdetails.css';
 import EditProduct from './editproduct';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Axios from 'axios';
 
 
@@ -19,7 +19,8 @@ class ProductDetails extends React.Component {
             img:'',
             price:0.0,
             category:'',
-            productId:0
+            productId:0,
+            success:false
         }
     }
     componentDidMount(){
@@ -29,6 +30,7 @@ class ProductDetails extends React.Component {
         Axios.get("http://localhost:3000/arrayOfProducts/")
         .then((response)=>{
         // console.log(response)
+        
         
         this.setState({data:response.data},()=>{
         console.log(typeof(this.state.data[0].productId))
@@ -56,6 +58,7 @@ class ProductDetails extends React.Component {
     Axios.delete("http://localhost:3000/arrayOfProducts/"+delid)
     .then((response)=>{
     console.log(response)
+    this.setState({success:true})
     
     }, (error)=>{
     console.log(error)
@@ -64,6 +67,11 @@ class ProductDetails extends React.Component {
     }
     
     render() {
+      if(this.state.success)
+        {
+            this.setState({success:false})
+            return (<Redirect to={{pathname:"/products"}}></Redirect>)
+        }
        
         console.log("render fn")
         console.log(this.state.data[0]) 
