@@ -54,19 +54,6 @@ class Products extends React.Component {
         //return <Redirect to ={{pathname:"/productdetails",state:{pid}}}></Redirect>
     }
     addProduct(event){ 
-    //     console.log('Add Product via axios and post')
-    // let productRequestBody = {
-    //     "name": this.state.name,
-    //     "since": this.state.friendsince,
-    //     "friendimage":this.state.friendimage
-    // }
-    // axios.post('http://localhost:3000/allfriends', productRequestBody)
-    //         .then(response=>{
-    //             console.log(response);
-    //             this.props.history.push('/')
-    //         }, error=>{
-    //             console.error(error);
-    //         })
     this.setState({addProductClicked:true})
     
 }
@@ -90,12 +77,12 @@ class Products extends React.Component {
             <div>
               <div>
 
-            <div>
+            {/* <div>
                 <label className="sct">Select Category:</label>
                 <select name="category" style={{width:"200px"}}>
                 <option>--Select--</option>
                 </select>
-           </div>
+           </div> */}
         
         <div>
           <form>
@@ -129,8 +116,6 @@ class Products extends React.Component {
          <div>
         <p>{p.name} Rs: {p.price}</p>
         <button className="button" onClick={this.viewProduct.bind(this)} id={p.productId}>View Product</button>
-        {/* <button className="button" >Edit</button>
-        <button className="button" >Delete</button> */}
          </div>
         </div>
         

@@ -1,7 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
 import './addproducts.css';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 
 class EditProduct extends React.Component {
@@ -13,8 +13,7 @@ class EditProduct extends React.Component {
             name:'',
             price:0.0,
             imgUrl:'',
-            category:'',
-            buttonStatus: false
+            category:''
         }
     
     }
@@ -101,6 +100,8 @@ class EditProduct extends React.Component {
                 }, error=>{
                     console.error(error);
                 })
+                //return <Redirect to="/productdetails" />;
+                
     }
 
     render() { 
@@ -196,7 +197,7 @@ class EditProduct extends React.Component {
                        <div>
                            
                            
-                       <button className="button" onClick={this.editProductSubmit.bind(this)} disabled={this.state.buttonStatus}>Submit</button>
+                       <button className="button" onClick={this.editProductSubmit.bind(this)}>Submit</button>
                        </div>  
                        
                    

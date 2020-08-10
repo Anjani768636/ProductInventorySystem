@@ -9,8 +9,8 @@ class ProductDetails extends React.Component {
     constructor(props){
     
         super(props)
-        console.log("got it")
-        // console.log(this.props.location);
+        //console.log("got it")
+        //console.log(this.props.location.state.id);
         
         this.state={
             data:[],
@@ -89,7 +89,7 @@ class ProductDetails extends React.Component {
                   
                       
                       <div className="product-price">
-                        <span>Price: Rs.36,999</span>
+                        <span>Rs.{this.state.price}</span>
                       </div>
                   
                       

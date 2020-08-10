@@ -1,7 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
 import './addproducts.css';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 
 class AddProduct extends React.Component {
@@ -76,6 +76,7 @@ class AddProduct extends React.Component {
                 }, error=>{
                     console.error(error);
                 })
+                return <Redirect push to="/productdetails" />;
     }
 
     render() { 

@@ -1,47 +1,44 @@
 {
   "arrayOfProducts": [
     {
-      "productId": 1,
-      "imgUrl": "https://www.idgcdn.com.au/products/image/12673/angle/8/415x415/345908/",
       "name": "Nokia 8 Sirocco",
+      "price": "36998",
+      "imgUrl": "https://www.idgcdn.com.au/products/image/12673/angle/8/415x415/345908/",
+      "productId": 1,
       "category": "Electronics",
-      "price": 36999
+      "id": "1"
     },
     {
-      "productId": 2,
+      "name": "GLORIA HIGH-LOGO SNEAKER",
+      "price": 918,
       "imgUrl": "https://guesseu.scene7.com/is/image/GuessEU/FLGLO4FAL12-BEIBR?wid=700&amp;fmt=jpeg&amp;qlt=80&amp;op_sharpen=0&amp;op_usm=1.0,1.0,5,0&amp;iccEmbed=0",
-      "name": "GLORIA HIGH LOGO SNEAKER",
+      "productId": 2,
       "category": "Fashion",
-      "price": 918
+      "id": "2"
     },
     {
       "productId": 3,
       "imgUrl": "https://guesseu.scene7.com/is/image/GuessEU/HWVG6216060-TAN?wid=700&amp;fmt=jpeg&amp;qlt=80&amp;op_sharpen=0&amp;op_usm=1.0,1.0,5,0&amp;iccEmbed=0",
       "name": "CATE RIGID BAG",
       "category": "Baggage",
-      "price": 440.5
+      "price": 440.5,
+      "id": "3"
     },
     {
       "productId": 4,
       "imgUrl": "http://guesseu.scene7.com/is/image/GuessEU/WC0001FMSWC-G5?wid=520&fmt=jpeg&qlt=80&op_sharpen=0&op_usm=1.0,1.0,5,0&iccEmbed=0",
       "name": "GUESS CONNECT WATCH",
       "category": "Electronics",
-      "price": 438.9
+      "price": 438.9,
+      "id": "4"
     },
     {
-      "productId": 5,
+      "name": "'80s RETRO GLAM KEFIAH",
+      "price": 204,
       "imgUrl": "https://guesseu.scene7.com/is/image/GuessEU/AW6308VIS03-SAP?wid=700&amp;fmt=jpeg&amp;qlt=80&amp;op_sharpen=0&amp;op_usm=1.0,1.0,5,0&amp;iccEmbed=0",
-      "name": "'70s RETRO GLAM KEFIAH",
+      "productId": 5,
       "category": "Apparel",
-      "price": 204
-    },
-    {
-      "productId": "8",
-      "name": "r",
-      "price": "55667",
-      "imgUrl": "https://cnet3.cbsistatic.com/img/oZnkfxJUBhIwReGAlebISLOPVBI=/940x0/2019/11/07/34da7d17-4016-4920-bed2-228c7bbd9fac/iphone-12-render-phone-arena.jpg",
-      "category": "",
-      "id": "S1jcJ8t"
+      "id": "5"
     }
   ]
 }
