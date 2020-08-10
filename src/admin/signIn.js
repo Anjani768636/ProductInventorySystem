@@ -8,7 +8,7 @@ class SignIn extends React.Component {
     state={
         user:'',
         password:'',
-        successs:false,
+        success:false,
 
     }
     componentDidMount()
@@ -25,7 +25,7 @@ class SignIn extends React.Component {
         console.log(logindata[0])
         if(logindata[0].user===this.state.user && logindata[0].password===this.state.password)
         {   console.log("hiii")
-            this.setState({successs:true},()=>{console.log(this.state.successs)})
+            this.setState({success:true},()=>{console.log(this.state.successs)})
         }
        
        }, (error)=>{
