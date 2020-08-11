@@ -1,10 +1,10 @@
   
-  .container {
+  /* .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 15px;
     display: flex;
-  }
+  } */
 
     .filter {
         max-width: 500px;
@@ -39,7 +39,7 @@
         cursor: pointer; 
       }
   
-    .card {
+    /* .card {
         float: left;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         max-width: 90%;
@@ -58,14 +58,14 @@
         grid-auto-rows: auto; 
         grid-gap: 1rem; 
         width: calc(100% - 30px);
-      }
+      } */
       
       .price {
         color: grey;
         font-size: 22px;
       }
       
-      .card button {
+      /* .card button {
         border: none;
         outline: 0;
         padding: 12px;
@@ -75,9 +75,9 @@
         cursor: pointer;
         width: 100%;
         font-size: 18px;
-      }
+      } */
       
-      .card button:hover {
+      /* .card button:hover {
         opacity: 0.7;
       }
 
@@ -86,6 +86,40 @@
         .cards {
            width: 100%;
         }
-     }
+     } */
+
+     /* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%; 
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
   
   

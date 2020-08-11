@@ -99,7 +99,7 @@ class Products extends React.Component {
           </form>
         </div>
 
-        </div>
+        {/* </div>
         <div className="container">
         <div className="cards">
   
@@ -121,8 +121,29 @@ class Products extends React.Component {
         <p>Qty: {p.qty}</p>
         <button className="button" onClick={this.viewProduct.bind(this)} id={p.id}>View Product</button>
          </div>
+        </div> */}
+
+</div>
+        <div className="row">
+        <div className="column">
+  
+        <div className="card" >
+        <img src="https://icon-library.com/images/icon-add/icon-add-0.jpg" alt="Add Product" style={{height:"200px",width:"200px"}}/> 
+        <p>Click below button to</p>
+        <p>Add Product.</p>
+        <button className="button" onClick={this.addProduct.bind(this)}>Add Product</button>
         </div>
+        </div> 
         
+        {this.state.emp.map(p=>(
+        <div className="column" >
+        <div className="card" >  
+        <img src={p.imgUrl} alt={p.name} style={{height:"200px",width:"200px"}}/> 
+        <p>{p.name} Rs: {p.price}</p>
+        <p>Qty: {p.qty}</p>
+        <button className="button" onClick={this.viewProduct.bind(this)} id={p.id}>View Product</button>
+        </div> 
+        </div>
 
         ))
         
@@ -132,7 +153,7 @@ class Products extends React.Component {
         
       
 </div>
-</div>
+
          );
     }
 }
