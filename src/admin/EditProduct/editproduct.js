@@ -141,7 +141,7 @@ class EditProduct extends React.Component {
                        <div>
                            <label>Add Category:</label>
                            <input type="text" value={this.state.category} onChange={this.getCategory} required/>
-                           <button className="button">Add</button>
+                           {/* <button className="button">Add</button> */}
                        </div>                      
                        <div>
                            <label>*Add Image URL:</label>
