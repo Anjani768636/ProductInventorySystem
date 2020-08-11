@@ -18,18 +18,26 @@ class SignIn extends React.Component {
     onButtonClick(event)
     {
        console.log(typeof(this.state.password))
-        Axios.get("http://localhost:3000/login")
+        Axios.get("http://localhost:3000/login/"+this.state.user)
     .then((response)=>{
         console.log(response.data)
-        let logindata=response.data
-        console.log(logindata[0])
-        if(logindata[0].user===this.state.user && logindata[0].password===this.state.password)
-        {   console.log("hiii")
-            this.setState({success:true},()=>{console.log(this.state.successs)})
+        if(this.state.password===response.data.password){
+            console.log("Got password")
+            this.setState({success:true})
         }
+        else{
+            alert("Password incorrect")
+        }
+        // let logindata=response.data
+        // console.log(logindata[0])
+        // if(logindata[0].user===this.state.user && logindata[0].password===this.state.password)
+        // {   console.log("hiii")
+        //     this.setState({success:true},()=>{console.log(this.state.successs)})
+        // }
        
        }, (error)=>{
         console.log(error)
+        alert("User does not exist. Create Account")
     })
        
     
@@ -59,7 +67,7 @@ class SignIn extends React.Component {
                     <div>
                         <div className="group">
                             <label HtmlFor="user" className="label">Username</label>
-                            <input id="user" type="text" class="input" onChange={this.onChangeUser.bind(this)}/>
+                            <input id="user" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" class="input" onChange={this.onChangeUser.bind(this)}/>
                         </div>
                         <div className="group">
                             <label for="pass" className="label">Password</label>

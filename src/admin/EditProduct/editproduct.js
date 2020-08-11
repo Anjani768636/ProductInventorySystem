@@ -1,33 +1,59 @@
 import React from 'react';
 import Axios from 'axios';
-import './addproducts.css';
+import '../AddProducts/addproducts.css';
 import { Link, Redirect } from 'react-router-dom';
 
 
-class AddProduct extends React.Component {
+class EditProduct extends React.Component {
     constructor(props){
     
         super(props)
         this.state ={
-            productId:0,
+            id:0,
             name:'',
             price:0.0,
             imgUrl:'',
             category:'',
             qty:0,
-            success:false,
-            buttonStatus: false
+            success:false
         }
     
     }
- 
+
+    componentDidMount(){
+        console.log(this.props)
+        this.setState({
+            id:this.props.id,
+            qty:this.props.qty,
+            name:this.props.name,
+            category:this.props.category,
+            price:this.props.price,
+            imgUrl:this.props.imgUrl
+        })
+    }
+    // componentWillMount(){
+    //     if(this.props.location.state !== undefined){
+    //         Axios.get('http://localhost:3000/products/'+this.props.location.state.myid)
+    //             .then(response=>{
+    //                 console.log(response);
+    //                 this.setState({
+    //                     name: response.data.name,
+    //                     since:response.data.since,
+    //                     id: response.data.id
+    //                 })
+    //             }, error=>{
+    //                 console.error(error);
+    //             })
+    //     }
+    // }
+
 
     getName=(event)=>{
         console.log(event)
         console.log(event.target)
         console.log(event.target.value)
         this.setState({name: event.target.value})
-        
+       
     }
 
     getCategory=(event)=>{
@@ -35,7 +61,7 @@ class AddProduct extends React.Component {
         console.log(event.target)
         console.log(event.target.value)
         this.setState({category: event.target.value})
-        
+       
     }
 
     getURL=(event)=>{
@@ -63,31 +89,32 @@ class AddProduct extends React.Component {
         console.log(event)
         console.log(event.target)
         console.log(event.target.value)
-        this.setState({productId: event.target.value})
+        this.setState({id: event.target.value})
     }
 
-    addProduct=()=>{
-        console.log('Add Product via axios and post')
+  
+
+    editProductSubmit=(event)=>{
+        event.preventDefault()
+        console.log('Edit friend via axios and put')
         let productRequestBody = {
-            "id":this.state.productId,
-            "productId":this.state.productId,
             "name": this.state.name,
             "price": this.state.price,
             "imgUrl":this.state.imgUrl,
             "category":this.state.category,
-            "qty":this.state.qty
-            
+            "qty":this.state.qty,
+            "id":this.state.id
         }
-        console.log(productRequestBody)
-        Axios.post('http://localhost:3000/arrayOfProducts', productRequestBody)
+        Axios.put('http://localhost:3000/arrayOfProducts/'+this.state.id, productRequestBody)
                 .then(response=>{
                     console.log(response);
                     this.setState({success:true})
-                    
+                   
                 }, error=>{
                     console.error(error);
                 })
-                return <Redirect push to="/productdetails" />;
+                //return <Redirect to="/productdetails" />;
+                
     }
 
     render() { 
@@ -96,43 +123,35 @@ class AddProduct extends React.Component {
             this.setState({success:false})
             return (<Redirect to={{pathname:"/products"}}></Redirect>)
         }
+     
         return ( 
             <div className="main-block">
         
             <div style={{display:"flex"}}>
                
                <div className="part-one">
-                   <form>
+                   <form onSubmit={this.editProductSubmit.bind(this)}>
                    
                        <h2>Product Details:</h2>
        
                        <div>
-                           <label>Select Category:</label>
-                           <select name="category" style={{width:"200px"}}>
-                               <option>--Select--</option>
-                           </select>
-                       </div>
-                      
-                       <div>
-                           <label>*Add Category:</label>
-                           <input type="text" id="category" onChange={this.getCategory}/>
-                           <button className="button">Add</button>
-                       </div>
-
-                       <div>
                            <label>*Product ID:</label>
-                           <input type="number" id="productID" onChange={this.getID}/>
+                           <input type="number" id="productID" value={this.state.id} readOnly onChange={this.getID} required/>
                        </div>
-                      
+                       <div>
+                           <label>Add Category:</label>
+                           <input type="text" value={this.state.category} onChange={this.getCategory} required/>
+                           <button className="button">Add</button>
+                       </div>                      
                        <div>
                            <label>*Add Image URL:</label>
-                           <input type="text" id="imgUrl" onChange={this.getURL}/>
+                           <input type="text" id="imgUrl" value={this.state.imgUrl} onChange={this.getURL} required/>
                            {/* <button className="button">Add Images</button> */}
                        </div>
                       
                        <div>
                            <label>*Product Name:</label>
-                           <input type="text" id="name" onChange={this.getName}/>
+                           <input type="text" id="name" value={this.state.name} onChange={this.getName} required/>
                        </div>
                      
                        <div>
@@ -144,59 +163,32 @@ class AddProduct extends React.Component {
                       
                        <div>
                            <label>*Price:</label>
-                           <input type="0.25" id="price" onChange={this.getPrice}/>
+                           <input type="0.25" id="price" pattern="^[1-9][0-9]*$" title="Numbers greater than 0" value={this.state.price} onChange={this.getPrice} required/>
                        </div>
                        
                        <div>
                            <label>*Quantity:</label>
-                           <input type="text" onChange={this.getQty}/>
+                           <input type="number" pattern="^[1-9][0-9]*$" title="Numbers greater than 0" value={this.state.qty} onChange={this.getQty} required/>
+                       </div>
+                       <div>
+                           <label>About Manufacturer</label>
+                           <div>
+                               <input type="text" />
+                           </div>
                        </div>
                       
                        <div>
-                           <label>Max Quantity:</label>
-                           <input type="text"/>
-                       </div>
+                       <button className="button">Submit</button>
+                       </div>  
                        
                    
                    </form>
                </div>
                
-                <div class="part-two">
-               <form>
-                   
-                       <h2>Additional Details:</h2>
-                       <div>
-                           <label>Specifications:</label>
-                           <div>
-                               <input type="text" style={{height:"200px",width:"300px"}}/>
-                           </div>
-                       </div>
-                      
-                       <div>
-                           <label>About Manufacturer</label>
-                           <div>
-                               <input type="text" style={{height:"200px",width:"300px"}}/>
-                           </div>
-                       </div>
-                       
-                       <div>
-                           <label>Stock Threshold:</label>
-                           <input type="text"/>
-                       </div>
-                       
-                       <div>
-                           
-                       
-                           <button className="button" onClick={this.addProduct.bind(this)} disabled={this.state.buttonStatus}>Submit</button>
-                       </div>  
-                       
-                   
-               </form>
-               </div>
             </div>
            </div>
          );
     }
 }
  
-export default AddProduct;
+export default EditProduct;

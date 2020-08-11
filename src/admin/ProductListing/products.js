@@ -1,9 +1,10 @@
 import React from 'react';
 import  axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
-
+import Header from '../Header/header'
 import './products.css';
-import ProductDetails from './productdetails';
+// import ProductDetails from '../ProductDetails/productdetails';
+import ProductDetails from '../ProductDetails/productdetails';
 
 class Products extends React.Component {
     
@@ -74,7 +75,9 @@ class Products extends React.Component {
              return <Redirect to ={{pathname:"/productdetails",state:{id:tempId}}}></Redirect>
         }
         return ( 
+            
             <div>
+                <Header></Header>
               <div>
 
             {/* <div>
@@ -101,8 +104,8 @@ class Products extends React.Component {
         <div className="cards">
   
         <div className="card" style={{marginRight:"10px"}}>
-        <img src="" alt="Add Product"/> 
-        <p>Click Here To</p>
+        <img src="https://icon-library.com/images/icon-add/icon-add-0.jpg" alt="Add Product" style={{height:"70%",width:"100%"}}/> 
+        <p>Click below button to</p>
         <p>Add Product.</p>
         <button className="button" onClick={this.addProduct.bind(this)}>Add Product</button>
         </div>
@@ -116,7 +119,7 @@ class Products extends React.Component {
          <div>
         <p>{p.name} Rs: {p.price}</p>
         <p>Qty: {p.qty}</p>
-        <button className="button" onClick={this.viewProduct.bind(this)} id={p.productId}>View Product</button>
+        <button className="button" onClick={this.viewProduct.bind(this)} id={p.id}>View Product</button>
          </div>
         </div>
         

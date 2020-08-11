@@ -1,8 +1,9 @@
 import React from 'react';
 import './productdetails.css';
-import EditProduct from './editproduct';
+import EditProduct from '../EditProduct/editproduct';
 import { Link, Redirect } from 'react-router-dom';
 import Axios from 'axios';
+import Header from '../Header/header'
 
 
 class ProductDetails extends React.Component {
@@ -19,7 +20,7 @@ class ProductDetails extends React.Component {
             img:'',
             price:0.0,
             category:'',
-            productId:0,
+            qty:0,
             success:false
         }
     }
@@ -33,12 +34,12 @@ class ProductDetails extends React.Component {
         
         
         this.setState({data:response.data},()=>{
-        console.log(typeof(this.state.data[0].productId))
+        console.log(typeof(this.state.data[0].id))
         const temp=parseInt(delid)
         
-        const filter=this.state.data.filter(p=>p.productId==delid)
+        const filter=this.state.data.filter(p=>p.id==delid)
         // this.setState({filter:filter})
-        this.setState({img:filter[0].imgUrl,name:filter[0].name,price:filter[0].price,category:filter[0].category,productId:filter[0].productId})
+        this.setState({img:filter[0].imgUrl,name:filter[0].name,price:filter[0].price,category:filter[0].category,id:filter[0].id,qty:filter[0].qty})
         
         })
         
@@ -76,13 +77,17 @@ class ProductDetails extends React.Component {
         console.log("render fn")
         console.log(this.state.data[0]) 
         return ( 
+          <div>
+            <Header></Header>
+          
             <div>
+              
                 {!this.state.editProductClicked&&(
                     <div className="container">
  
             
                     <div className="left-column">
-                      {/* <img src={this.state.data.imgUrl} alt=""/> */}
+                     <img src={this.state.img} alt=""/>
                     </div>
                     
                    
@@ -92,7 +97,7 @@ class ProductDetails extends React.Component {
                       <div className="product-description">
                         {/* <span>{this.state.data[0].category}</span> */}
                         <h1>{this.state.name}</h1>
-                        <p>Say hello to Nokia 8 Sirocco - a phone that is designed to help you click stunning images and record quality audio. It comes with 6 GB of RAM and an internal storage of 128 GB. It is powered by the Octa-core Snapdragon Processor to let you enjoy faster browsing. Not to forget, this phone has an elegant design thanks to the beautiful blend of stainless steel.</p>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                       </div>
                   
                       
@@ -101,19 +106,19 @@ class ProductDetails extends React.Component {
                       </div>
                   
                       
-                      <div className="row">
+                      {/* <div className="row">
                           <div className="column" style={{backgroundcolor:"#aaa"}}>
-                             <p>Spec</p>
+                          <p>simply dummy text of spec. </p>
                           </div>
                           <div className="column" style={{backgroundcolor:"#bbb"}}>
-                             <p>Spec</p> 
+                          <p>simply dummy text of spec. </p>
                           </div>
-                      </div>
+                      </div> */}
                   
                      
                       <div className="product-description">
                           <span>About Manufacturer</span>
-                          <p>Say hello to Nokia 8 Sirocco - a phone that is designed to help you click stunning images and record quality audio. .</p>
+                          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                       </div>
                   
                       
@@ -126,12 +131,13 @@ class ProductDetails extends React.Component {
                   </div>
                 )}
                 {this.state.editProductClicked&&(
-                <EditProduct name={this.state.name} category={this.state.category} productId={this.state.productId} price={this.state.price} imgUrl={this.state.img}>
+                <EditProduct name={this.state.name} category={this.state.category} id={this.state.id} price={this.state.price} imgUrl={this.state.img} qty={this.state.qty}>
 
                 </EditProduct>
                     
                 )}
             
+          </div>
           </div>
          );
     }

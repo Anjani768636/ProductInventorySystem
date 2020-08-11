@@ -1,7 +1,22 @@
 {
   "arrayOfProducts": [
     {
-      "productId": 3,
+      "name": "Nokia 8 Sirocco",
+      "price": "36998",
+      "imgUrl": "https://www.idgcdn.com.au/products/image/12673/angle/8/415x415/345908/",
+      "category": "Electronics",
+      "id": "1",
+      "qty": 5
+    },
+    {
+      "name": "GLORIA HIGH-LOGO SNEAKER",
+      "price": "919",
+      "imgUrl": "https://guesseu.scene7.com/is/image/GuessEU/FLGLO4FAL12-BEIBR?wid=700&amp;fmt=jpeg&amp;qlt=80&amp;op_sharpen=0&amp;op_usm=1.0,1.0,5,0&amp;iccEmbed=0",
+      "category": "Fashion",
+      "id": "2",
+      "qty": 4
+    },
+    {
       "imgUrl": "https://guesseu.scene7.com/is/image/GuessEU/HWVG6216060-TAN?wid=700&amp;fmt=jpeg&amp;qlt=80&amp;op_sharpen=0&amp;op_usm=1.0,1.0,5,0&amp;iccEmbed=0",
       "name": "CATE RIGID BAG",
       "category": "Baggage",
@@ -10,7 +25,6 @@
       "qty": 3
     },
     {
-      "productId": 4,
       "imgUrl": "http://guesseu.scene7.com/is/image/GuessEU/WC0001FMSWC-G5?wid=520&fmt=jpeg&qlt=80&op_sharpen=0&op_usm=1.0,1.0,5,0&iccEmbed=0",
       "name": "GUESS CONNECT WATCH",
       "category": "Electronics",
@@ -19,28 +33,38 @@
       "qty": 2
     },
     {
-      "name": "'80s RETRO GLAM KEFIAH",
-      "price": 204,
-      "imgUrl": "https://guesseu.scene7.com/is/image/GuessEU/AW6308VIS03-SAP?wid=700&amp;fmt=jpeg&amp;qlt=80&amp;op_sharpen=0&amp;op_usm=1.0,1.0,5,0&amp;iccEmbed=0",
-      "productId": 5,
-      "category": "Apparel",
-      "id": "5",
-      "qty": 1
+      "name": "Nokia",
+      "price": "10009",
+      "imgUrl": "https://www.idgcdn.com.au/products/image/12673/angle/8/415x415/345908/",
+      "category": "Electronics",
+      "qty": "5",
+      "id": "7"
     },
     {
-      "name": "Nokia 8 Sirocco",
-      "price": "36999",
+      "name": "'80s RETRO GLAM KEFIAH",
+      "price": "205",
+      "imgUrl": "https://guesseu.scene7.com/is/image/GuessEU/AW6308VIS03-SAP?wid=700&amp;fmt=jpeg&amp;qlt=80&amp;op_sharpen=0&amp;op_usm=1.0,1.0,5,0&amp;iccEmbed=0",
+      "category": "Apparel",
+      "qty": "5",
+      "id": "11"
+    },
+    {
+      "id": "16",
+      "name": "iPhone 11",
+      "price": "123456",
       "imgUrl": "https://www.idgcdn.com.au/products/image/12673/angle/8/415x415/345908/",
-      "productId": "10",
       "category": "Electronics",
-      "qty": "4",
-      "id": "10"
+      "qty": "6"
     }
   ],
   "login": [
     {
-      "user": "admin",
-      "password": "12345"
+      "user": "admin@gmail.com",
+      "password": "12345Ab!"
+    },
+    {
+      "id": "anjani@gmail.com",
+      "password": "12345Ab!"
     }
   ]
 }

@@ -1,11 +1,11 @@
 import React from 'react';
-import SignIn from './signIn'
-import SignUp from './signUp';
-import Products from './products';
-import ProductDetails from './productdetails';
+import SignIn from './Login/signIn'
+import SignUp from './Login/signUp';
+import Products from './ProductListing/products';
+import ProductDetails from './ProductDetails/productdetails';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import AddProduct from './addproducts';
-import Dashboard from './dashboard';
+import AddProduct from './AddProducts/addproducts';
+import Dashboard from './Dashboard/dashboard';
 class RootComponent extends React.Component {
     state={ }
     render(){

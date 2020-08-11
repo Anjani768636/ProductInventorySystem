@@ -7,12 +7,14 @@
 
   }
 
-  .part-one{
-    width: 60%;
+  /* .part-one{
+     width: 60%; 
     
-    margin-right: 100px;
+     margin-right: 100px; 
+     margin-left: 250px; 
+    padding-left: 250px;
    
-  }
+  } */
   .part-two{
     width: 40%;
     position: relative;
