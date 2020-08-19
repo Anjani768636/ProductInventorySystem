@@ -1,120 +1,119 @@
 import React from 'react';
-import  axios from 'axios';
-import { Redirect } from 'react-router-dom';
+import '../ProductListing/products.css'
+import axios from 'axios';
+import ProductDetail from '../ProductDetails/productdetails';
 import Header from '../Header/header'
-import './products.css';
+import { withRouter } from 'react-router-dom';
 
+class Product extends React.Component {
 
-class Products extends React.Component {
-    
-    state={
-        searchtext:"",
-
-        viewProductClicked:false,
-        viewproductId:0,
-
-        addProductClicked:false,
-
-        emp:[],
-        temp:[]
+    constructor(props) {
+        super(props)
+        this.state = {
+            products: [],
+            productsList: [],
+            myid: 0,
+            searchValue: ''
+        }
     }
 
-    componentDidMount(){
-       
-        this.getProducts();
+    componentWillMount() {
+        this.getAllProducts()
     }
 
-    getProducts(){
-        axios.get('http://localhost:3000/arrayOfProducts')
-            .then((response)=>{
-
-                console.log(response)
-                console.log(response.data)
-
-                this.setState({emp: response.data,temp:response.data})
-
-                console.log(this.state.emp)
-
-            }, (error)=>{
-                console.log(error)
-            })
-    }
-
-
-
-    searchHandle(event){
-        this.setState({searchtext:event.target.value},()=>{
-            console.log(this.state.searchtext)
-            const products=this.state.temp.filter(p=>{
-               return( p.name.toLowerCase().includes(this.state.searchtext.toLowerCase()) ||
-                p.category.toLowerCase().includes(this.state.searchtext.toLowerCase()) ||
-                p.qty.toLowerCase().includes(this.state.searchtext.toLowerCase())
-            )})
-            this.setState({emp:products})
+    getAllProducts = () => {
+        axios.get("http://localhost:3000/allProducts").then(response => {
+        this.setState({ products: response.data, productsList: response.data })
+        }, error => {
+            console.log(error)
         })
-       
-
-    }
-   
-    viewProduct(event){
-
-        console.log(event.target.id)
-
-        this.setState({viewProductClicked:true, viewproductId:event.target.id})
-
-        localStorage.setItem("id",event.target.id)
-        
-        //const pid=event.target.id;
-        //return <Redirect to ={{pathname:"/productdetails",state:{pid}}}></Redirect>
     }
 
-    addProduct(event){ 
-    this.setState({addProductClicked:true})
+    deleteProductById = (id) => {
+        axios.delete("http://localhost:3000/allProducts/" + id).then(response => {
+        this.getAllProducts()
+        }, error => {
+            console.log(error)
+        })
     }
 
+    editProductById = (id) => {
+        console.log(id)
+        this.setState({ myid: id })
+        this.props.history.push({
+            pathname: '/editproduct',
+            state: { myid: id }
+        })
+    }
+    viewProductById = (id) => {
+        console.log(id)
+        this.setState({ myid: id })
+        this.props.history.push({
+            pathname: '/editproduct',
+            state: { myid: id }
+        })
+    }
 
-    render() { 
+    renderAllProducts = () => {
+        return this.state.products.map(product => {
+            return (
+                <ProductDetail
+                    key={product.id}
+                    id={product.id}
+                    image={product.image}
+                    name={product.name}
+                    price={product.price}
+                    quantity={product.quantity}
+                    category={product.category}
 
-        if(this.state.addProductClicked){
-            this.setState({addProductClicked:false})
-            return <Redirect push to="/addproducts" />;
+                    deleteId={this.deleteProductById}
+                    editId={this.editProductById.bind(this)}
+                    viewId={this.viewProductById.bind(this)}
+                >
+                </ProductDetail>
+            )
+        })
+    }
+    addProduct() {
+        this.props.history.push('/addproducts')
+    }
+    getSearch = (e) => {
+        let searchV = e.target.value
+        if (searchV === '') {
+            this.getAllProducts()
         }
+        this.setState({ searchValue: searchV })
+        console.log(searchV);
+        let searchF = this.state.productsList.filter(f => {
+            return (f.name.toLowerCase().match(searchV.toLowerCase().trim()) ||
+                f.category.toLowerCase().match(searchV.toLowerCase().trim()))
 
-        if(this.state.viewProductClicked){
-            this.setState({viewProductClicked:false})
+        })
+        console.log(searchF);
+        this.setState({ products: searchF })
 
-            console.log("problem")
-            console.log(this.state.viewproductId)
+    }
+    render() {
 
-            const tempId=this.state.viewproductId;
-            //return <Redirect push to="/productdetails" />;
-             return <Redirect to ={{pathname:"/productdetails",state:{id:tempId}}}></Redirect>
-        }
-
-        return ( 
-            
+        return (
             <div>
                 <Header></Header>
-                <div>
-                        {/* <div>
-                                <label className="sctpl">Select Category:</label>
-                                <select name="category" style={{width:"200px"}}>
-                                    <option>--Select--</option>
-                                </select>
-                            </div> */}
-        
+                    <div>
+                        {/* <form>
+                            <label>Search:</label>
+                            <input type="text" className="searchbarpl"placeholder="Search by Name/Category/Qty" value={this.state.searchValue} onChange={this.getSearch}></input>
+                            <button className="add" onClick={this.addProduct.bind(this)}>Add Product</button>
+                        </form> */}
                         <div>
                             <form>
                                 <div>
                                     <label>Search:</label>
-                                    <input type="text" className="searchbarpl" onChange={this.searchHandle.bind(this)}/>
+                                    <input type="text" className="searchbarpl" value={this.state.searchValue} onChange={this.getSearch}/>
                                 </div>   
                             </form>
                         </div>
 
-       
-
-                         <div className="rowpl">
+                        <div className="rowpl">
                             <div className="columnpl">
                                 <div className="cardpl" >
                                     <img src="https://icon-library.com/images/icon-add/icon-add-0.jpg" onClick={this.addProduct.bind(this)} alt="Add Product" height="236x" width="200px"/> 
@@ -122,24 +121,17 @@ class Products extends React.Component {
                                     <p>Add Product.</p>
                                 </div>
                             </div> 
-        
-                            {this.state.emp.map(p=>(
-                            <div className="columnpl" >
-                                <div className="cardpl" >  
-                                    <img src={p.imgUrl} alt={p.name} style={{height:"200px",width:"200px"}}/> 
-                                    <p>{p.name} Rs: {p.price}</p>
-                                    <p>Qty: {p.qty}</p>
-                                    <button className="buttonpl" onClick={this.viewProduct.bind(this)} id={p.id}>View Product</button>
-                                </div> 
-                            </div>
-                            ))
-                            }
                         </div>
-                </div>
-            </div>
+                
+                
+                {this.renderAllProducts()}
 
+
+
+            </div>
+            </div>
         );
     }
 }
- 
-export default Products;
+
+export default withRouter (Product);

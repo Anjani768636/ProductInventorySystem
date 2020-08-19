@@ -1,192 +1,149 @@
 import React from 'react';
+import './content.css'
 import Axios from 'axios';
-import './addproducts.css';
-import { Redirect } from 'react-router-dom';
-import Header from '../Header/header'
+import Header from '../Header/header';
 
 class AddProduct extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props)
-        this.state ={
-            id:0,
-            name:'',
-            price:0.0,
-            imgUrl:'',
-            category:'',
-            qty:0,
-            success:false  
+        this.state = {
+            productId: 0,
+            productImage: '',
+            productName: '',
+            productPrice: 0,
+            productQuantity: 0,
+            productCategory: '',
+            iderror: '',
+            nameerror: '',
+            categoryerror: '',
+            imageerror: '',
+
+
         }
     }
- 
 
-    getName=(event)=>{
 
-        console.log(event)
-        console.log(event.target)
-        console.log(event.target.value)
 
-        this.setState({name: event.target.value})
-        
+    getName = (event) => {
+        this.setState({ productName: event.target.value })
+        this.checkName()
+    }
+    getPrice = (event) => {
+        this.setState({ productPrice: event.target.value })
+
+    }
+    getQuantity = (event) => {
+        this.setState({ productQuantity: event.target.value })
+
+    }
+    getCategory = (event) => {
+        this.setState({ productCategory: event.target.value })
+        this.checkCategory()
     }
 
-    getCategory=(event)=>{
-
-        console.log(event)
-        console.log(event.target)
-        console.log(event.target.value)
-
-        this.setState({category: event.target.value})
-        
+    getImage = (event) => {
+        console.log(event.target.value.substr(12))
+        this.setState({ productImage: event.target.value.substr(12) })
+        this.checkImage()
     }
 
-    getURL=(event)=>{
 
-        console.log(event)
-        console.log(event.target)
-        console.log(event.target.value)
-
-        this.setState({imgUrl: event.target.value})
+    checkName = () => {
+        let nameerror = ''
+        if (this.state.productName.length < 1) {
+            nameerror = "* Give Valid Name"
+            this.setState({ nameError: nameerror })
+        } else {
+            this.setState({ nameError: "" })
+        }
     }
 
-    getPrice=(event)=>{
 
-        console.log(event)
-        console.log(event.target)
-        console.log(event.target.value)
-
-        this.setState({price: event.target.value})
+    checkCategory = () => {
+        let categoryerror = ''
+        if (this.state.productCategory.length <= 1) {
+            categoryerror = "* Give valid Category "
+            this.setState({ categoryError: categoryerror })
+        } else {
+            this.setState({ categoryError: "" })
+        }
     }
 
-    getQty=(event)=>{
-
-        console.log(event)
-        console.log(event.target)
-        console.log(event.target.value)
-
-        this.setState({qty: event.target.value})
+    checkImage = () => {
+        let imageerror = ''
+        if (this.state.productImage) {
+            imageerror = "Add Image"
+            this.setState({ imageError: imageerror })
+        } else {
+            this.setState({ imageError: "" })
+        }
     }
 
-    getID=(event)=>{
+    addProduct = () => {
+        let productRequest = {
+            "id": this.state.productId,
+            "image": this.state.productImage,
+            "name": this.state.productName,
+            "price": this.state.productPrice,
+            "quantity": this.state.productQuantity,
+            "category": this.state.productCategory,
 
-        console.log(event)
-        console.log(event.target)
-        console.log(event.target.value)
 
-        this.setState({id: event.target.value})
-    }
-
-    addProduct=()=>{
-
-        console.log('Add Product via axios and post')
-
-        let productRequestBody = {
-            "id":this.state.id,
-            "name": this.state.name,
-            "price": this.state.price,
-            "imgUrl":this.state.imgUrl,
-            "category":this.state.category,
-            "qty":this.state.qty
-            
         }
 
-        console.log(productRequestBody)
-
-        Axios.post('http://localhost:3000/arrayOfProducts', productRequestBody)
-                .then(response=>{
-
-                    console.log(response);
-
-                    this.setState({success:true})  
-                }, error=>{
-
-                    console.error(error);
-
+        if (this.state.nameError === '' && this.state.categoryError === '' && this.state.imageError === '') {
+            Axios.post("http://localhost:3000/allProducts", productRequest)
+                .then(response => {
+                    console.log(response)
+                    this.props.history.push('/products')
+                }, error => {
+                    console.log(error)
                 })
-                return <Redirect push to="/productdetails" />;
+        }
+
+
+
     }
 
-    render() { 
-        if(this.state.success)
-        {
-            this.setState({success:false})
-            return (<Redirect to={{pathname:"/products"}}></Redirect>)
-        }
-        return ( 
-            <div>
+
+
+    render() {
+        return (
+            <div >
                 <Header></Header>
-                    <div>
-                        <div>
-                            <h2>Add Product Details</h2>
-                        </div>
-                        <div className="containerap">
-               
-                            <form onSubmit={this.addProduct.bind(this)}>
 
-                                <div className="rowap">
-                                    <div className="col-25ap">
-                                        <label className="labelap">*Add Category:</label>
-                                    </div>
-                                    <div className="col-75ap">
-                                        <input className="inputfield" type="text" id="category" onChange={this.getCategory} required/>
-                                    </div>
-                                </div>
 
-                                <div className="rowap">
-                                    <div className="col-25ap">
-                                        <label className="labelap">*Product ID:</label>
-                                    </div>
-                                    <div className="col-75ap">
-                                        <input className="inputfield" type="number" min="1" id="productID" onChange={this.getID} required/>
-                                    </div>
-                                </div>
 
-                                <div className="rowap">
-                                    <div className="col-25ap">
-                                        <label className="labelap">*Add Image URL:</label>
-                                    </div>
-                                    <div className="col-75ap">
-                                        <input className="inputfield" type="text" id="imgUrl" onChange={this.getURL} required/>
-                                    </div>
-                                </div>
 
-                                <div className="rowap">
-                                    <div className="col-25ap">
-                                        <label className="labelap">*Product Name:</label>
-                                    </div>
-                                    <div className="col-75ap">
-                                        <input className="inputfield" type="text" id="name" onChange={this.getName} required/> 
-                                    </div>
-                                </div>
-                    
-                                <div className="rowap">
-                                    <div className="col-25ap">
-                                        <label className="labelap">*Price:</label>
-                                    </div>
-                                    <div className="col-75ap">
-                                        <input className="inputfield" type="0.25" pattern="^[1-9][0-9]*$" title="Numbers greater than 0 and not preceded by 0 " id="price" onChange={this.getPrice} required/>
-                                    </div>
-                                </div>
 
-                                <div className="rowap">
-                                    <div className="col-25ap">
-                                        <label className="labelap">*Quantity:</label>
-                                    </div>
-                                    <div className="col-75ap">
-                                        <input className="inputfield" type="number" min="1" title="Numbers greater than 0" onChange={this.getQty} required/>
-                                    </div>
-                                </div>
+                <form >
+                    <fieldset style={{ marginTop: '2px' }}  >
+                        <center style={{ padding: '10px' }}>
+                            <h2 >Add Product</h2>
 
-                                <div className="rowap">
-                                    <button className="buttonap" >Submit</button>
-                                </div>
-                            </form>
+                            <input type="text" placeholder="Product Name" onChange={this.getName} required >
 
-                        </div>
+                            </input>
+                            <div>{this.state.nameError}</div>
+                            <input type="number" placeholder="Price" onChange={this.getPrice} min="1" required ></input>
+                            <br></br>
+                            <input type="number" placeholder="Quantity" onChange={this.getQuantity} min="1" required ></input>
+                            <br></br>
+                            <input type="text" placeholder="Category" onChange={this.getCategory} required  ></input>
+                            <div>{this.state.categoryError}</div>
 
-                    </div>
-            </div> 
-         );
+                            <input type="file" onChange={this.getImage} required multiple accept='image/*'></input>
+
+
+
+                            <button type="submit" onClick={this.addProduct} >Add</button>
+                        </center>
+                    </fieldset>
+                </form>
+
+            </div>
+        );
     }
 }
- 
+
 export default AddProduct;

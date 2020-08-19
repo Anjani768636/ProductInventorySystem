@@ -1,137 +1,39 @@
 import React from 'react';
-import './productdetails.css';
-import EditProduct from '../EditProduct/editproduct';
-import { Link, Redirect } from 'react-router-dom';
-import Axios from 'axios';
-import Header from '../Header/header'
-
-
-class ProductDetails extends React.Component {
-    constructor(props){
-    
+import '../ProductDetails/productdetails.css'
+import { withRouter } from 'react-router-dom';
+class ProductDetail extends React.Component {
+    constructor(props) {
         super(props)
-        //console.log("got it")
-        //console.log(this.props.location.state.id);
-        
-        this.state={
-            data:[],
-            filter:[],
-            name:'',
-            img:'',
-            price:0.0,
-            category:'',
-            qty:0,
-            success:false
+        this.state = {
+
         }
     }
-    componentDidMount(){
-        const delid=localStorage.getItem("id");
-
-        console.log(delid)
-
-        Axios.get("http://localhost:3000/arrayOfProducts/")
-        .then((response)=>{
-        this.setState({data:response.data},()=>{
-
-        console.log(typeof(this.state.data[0].id))
-
-        const temp=parseInt(delid)
-        
-        const filter=this.state.data.filter(p=>p.id==delid)
-
-        this.setState({img:filter[0].imgUrl,name:filter[0].name,price:filter[0].price,category:filter[0].category,id:filter[0].id,qty:filter[0].qty})
-        
-        })
-        
-        }, (error)=>{
-
-        console.log(error)
-
-        })
-        }
-
-    editProduct(event){
-        this.setState({editProductClicked:true})
+    deleteProduct = () => {
+        this.props.deleteId(this.props.id)
     }
 
-    deleteHandler(event)
-    {
-    const delid=parseInt(localStorage.getItem("id"))
-
-    console.log(typeof(delid))
-
-    Axios.delete("http://localhost:3000/arrayOfProducts/"+delid)
-    .then((response)=>{
-
-    console.log(response)
-
-    this.setState({success:true})
-    
-    }, (error)=>{
-    console.log(error)
-    })
-    
+    editProductById(){
+        this.props.editId(this.props.id)
     }
-    
+
+    viewProductById(){
+        this.props.viewId(this.props.id)
+    }
     render() {
-
-      if(this.state.success){
-            this.setState({success:false})
-            return (<Redirect to={{pathname:"/products"}}></Redirect>)
-      }
-       
-        console.log("render fn")
-        console.log(this.state.data[0]) 
-
-        return ( 
-          <div>
-            <Header></Header>
-            <div>
-                {!this.state.editProductClicked&&(
-                <div className="containerpd">
-
-                    <div className="left-columnpd">
-                        <img src={this.state.img} alt="Image not found"/>
-                    </div>
-
-                    <div className="right-columnpd">
-
-                        <div className="product-descriptionpd">
-                          <span>{this.state.category}</span>
-                          <h1>{this.state.name}</h1>
-                          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                        </div>
-
-                        <div className="product-pricepd">
-                          <span>Rs.{this.state.price}</span>
-                        </div>
-                                       
-                        <div className="product-descriptionpd">
-                          <span>About Manufacturer</span>
-                          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                        </div>
-                  
-                      
-                        <div className="rowpd">
-                          <button className="buttonpd" onClick={this.deleteHandler.bind(this)}>Delete Product</button>
-                          <button className="buttonpd"onClick={this.editProduct.bind(this)}>Edit Product Details</button>
-                        </div>
-                         
-                    </div>
-
-                </div>
-                )}
-
-                {this.state.editProductClicked&&(
-                <EditProduct name={this.state.name} category={this.state.category} id={this.state.id} price={this.state.price} imgUrl={this.state.img} qty={this.state.qty}>
-
-                </EditProduct>
-                    
-                )}
-            </div>
-          </div>
-         );
+        return (
+           
+              <div className="columnpl" style={{display:"inline"}} >
+                <div className="cardpl" >  
+                    <img src={this.props.image} alt={this.props.name}style={{height:"200px",width:"200px"}}/> 
+                    <p>{this.props.name} Rs: {this.props.price}</p>
+                    <p>Qty: {this.props.quantity}</p>
+                    <button className="buttonpl" onClick={this.editProductById.bind(this)} >Update</button>
+                    <button className="buttonpl" onClick={this.deleteProduct}>Delete</button>
+                    <button className="buttonpl" onClick={this.viewProductById.bind(this)}>View Product</button> 
+                </div> 
+              </div>
+        );
     }
 }
- 
-export default ProductDetails;
+
+export default withRouter (ProductDetail);

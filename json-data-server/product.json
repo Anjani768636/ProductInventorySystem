@@ -1,0 +1,34 @@
+{
+  "allProducts": [
+    {
+      "id": "vjLP84d",
+      "image": "logo.png",
+      "name": "jeans",
+      "price": "1000",
+      "quantity": "12",
+      "category": "clothes"
+    },
+    {
+      "id": "dHojtTr",
+      "image": "toys.jpg",
+      "name": "teddy",
+      "price": "220",
+      "quantity": "5",
+      "category": "toys"
+    }
+  ],
+  "login": [
+    {
+      "user": "admin@gmail.com",
+      "password": "12345Ab!"
+    },
+    {
+      "id": "anjani@gmail.com",
+      "password": "12345Ab!"
+    },
+    {
+      "id": "anjani9876@gmail.com",
+      "password": "12345Ab!"
+    }
+  ]
+}
