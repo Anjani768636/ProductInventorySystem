@@ -1,6 +1,7 @@
 import React from 'react';
 import login from './login.jpeg';
 import Axios from 'axios';
+import './signIn.css'
 import { Link } from 'react-router-dom';
 import {Redirect} from 'react-router-dom';
 
@@ -9,18 +10,17 @@ class SignIn extends React.Component {
         user:'',
         password:'',
         success:false,
-
     }
-    componentDidMount()
-    {
-
-    }
+  
     onButtonClick(event)
     {
        console.log(typeof(this.state.password))
+
         Axios.get("http://localhost:3000/login/"+this.state.user)
-    .then((response)=>{
+        .then((response)=>{
+        
         console.log(response.data)
+
         if(this.state.password===response.data.password){
             console.log("Got password")
             this.setState({success:true})
@@ -28,15 +28,11 @@ class SignIn extends React.Component {
         else{
             alert("Password incorrect")
         }
-        // let logindata=response.data
-        // console.log(logindata[0])
-        // if(logindata[0].user===this.state.user && logindata[0].password===this.state.password)
-        // {   console.log("hiii")
-        //     this.setState({success:true},()=>{console.log(this.state.successs)})
-        // }
-       
-       }, (error)=>{
+
+        }, (error)=>{
+
         console.log(error)
+
         alert("User does not exist. Create Account")
     })
        
@@ -53,40 +49,43 @@ class SignIn extends React.Component {
 
 
     render() { 
+
         if(this.state.success)
         {   this.setState({success:false})
            return (<Redirect to={{pathname:"/products"}}></Redirect>)
         }
+        
         return ( 
-            <div className="bg" style={{ backgroundImage: `url(${login})`}}>
-            <div className="login-wrap" >
-               
-            <div className="login-html">
-                <label className="tab">Sign In</label>
-                <div className="login-form">
-                    <div>
-                        <div className="group">
-                            <label HtmlFor="user" className="label">Username</label>
-                            <input id="user" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" class="input" onChange={this.onChangeUser.bind(this)}/>
-                        </div>
-                        <div className="group">
-                            <label for="pass" className="label">Password</label>
-                            <input id="pass" type="password" class="input" onChange={this.onChangePassword.bind(this)} data-type="password"/>
-                        </div>
-                        <div className="group">
-                        <button  className="button" value="Sign In"  onClick={this.onButtonClick.bind(this)}>Sign in</button>
-                        </div>
-                        <div className="hr"></div>
-                        <div className="foot-lnk">
-                            <a href="#forgot">Forgot Password?</a>
-                          
-                              <Link to='/signUp'>Don't have an account?</Link>
-                           
-                        </div>
+        <div className="bgsi" style={{ backgroundImage: `url(${login})`}}>
+            <div className="login-wrapsi" >
+                
+                <div className="login-htmlsi">
+                    <label className="tabsi">Sign In</label>
+                    <div className="login-formsi">
+                        
+                            <div className="groupsi">
+                                <label htmlFor="usersi" className="labelsi">Username</label>
+                                <input id="usersi" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" className="inputsi" onChange={this.onChangeUser.bind(this)}/>
+                            </div>
+
+                            <div className="groupsi">
+                                <label htmlFor="passsi" className="label">Password</label>
+                                <input id="passsi" type="password" className="inputsi" onChange={this.onChangePassword.bind(this)} data-type="password"/>
+                            </div>
+
+                            <div className="groupsi">
+                            <button  className="buttonsi" value="Sign In"  onClick={this.onButtonClick.bind(this)}>Sign in</button>
+                            </div>
+
+                            <div className="hrsi"></div>
+
+                            <div className="foot-lnksi">                          
+                                <Link to='/signUp'>Don't have an account?</Link>  
+                            </div>
+
                     </div>
                 </div>
             </div>
-        </div>
         </div>
          );
     }

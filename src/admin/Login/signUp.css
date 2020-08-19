@@ -6,12 +6,12 @@
 a{
 	color:inherit;text-decoration:none
 }
-.bgsi{
+.bgsu{
 	background-repeat: no-repeat;
 	background-size: cover;
 }
 
-.login-wrapsi{
+.login-wrapsu{
 	width:100%;
 	margin:auto;
 	margin-top: 100px;
@@ -21,26 +21,23 @@ a{
 	position:relative;
 	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
 }
-.login-htmlsi{
+.login-htmlsu{
 	width:100%;
 	height:100%;
 	position:absolute;
-	padding:90px 70px 50px 70px;
+	padding:25px 70px 50px 70px;
 	background-color: white;
 }
 
-.login-htmlsi .tabsi{
+.login-htmlsu .tabsu{
 	font-size:22px;
-	margin-left: 15px;
-	margin-right:15px;
-	padding:5px; 
 	display:inline-block;
 	text-transform:uppercase;
-} 
-.login-formsi .groupsi{
+}
+.login-formsu .groupsu{
 	margin-bottom:15px;
 }
-.login-formsi .groupsi .labelsi{
+.login-formsu .groupsu .labelsu{
 	width:100%;
 	color:#fff;
 	display:block;
@@ -48,27 +45,27 @@ a{
 	font-size:12px;
 	text-transform:uppercase;
 }
-.login-formsi .groupsi .buttonsi{
-	margin:0 15px 0px 145px;
+.login-formsu .groupsu .buttonsu{
+	margin:0 15px 10px 150px;
 	padding:15px 15px;
 	color:#fff;
 	background-color:black;
 	display:block;
 	text-transform:uppercase;
 }
-.login-formsi .groupsi .inputsi{
+.login-formsu .groupsu .inputsu{
 	padding:15px 20px;
 	background:rgba(255,255,255,.1);
 	width:100%;
 	color:black;
 	display:block;
 }
-.hrsi{
+.hrsu{
 	height:2px;
 	
 	background:rgba(255,255,255,.2);
 }
-.foot-lnksi{
+.foot-lnksu{
 	text-align:center;
 	padding: 0px;
 }

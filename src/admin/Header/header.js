@@ -5,15 +5,18 @@ class Header extends React.Component {
 
     render() { 
         return ( 
-            // <h2>HI</h2>
+           
             <div className="header">
                
-                <Link to='/products'>Products</Link>
+                <a href="#default" className="logo">Product Inventory System</a>
+
                 <div className="header-right">
-                <Link to='/dashboard'>Dashboard</Link>
-                <Link to='/'>Logout</Link>
+                    <Link to='/products'>Products</Link>
+                    <Link to='/dashboard'>Dashboard</Link>
+                    <Link to='/'>Logout</Link>
+                </div>
+                
             </div>
-    </div>
          );
     }
 }

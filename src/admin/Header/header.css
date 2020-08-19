@@ -17,7 +17,7 @@
     border-radius: 4px;
   }
   
-  /* Back to previous page  */
+
   .header a.logo {
     font-size: 20px;
     font-weight: bold;
@@ -33,10 +33,7 @@
   .header-right {
     float: right;
   }
-  /* h2{
-    font-size: 100px;
-    background-color: white; 
-  } */
+
   @media screen and (max-width: 500px) {
     .header a {
       float: none;

@@ -3,7 +3,7 @@ import SignIn from './Login/signIn'
 import SignUp from './Login/signUp';
 import Products from './ProductListing/products';
 import ProductDetails from './ProductDetails/productdetails';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import AddProduct from './AddProducts/addproducts';
 import Dashboard from './Dashboard/dashboard';
 class RootComponent extends React.Component {

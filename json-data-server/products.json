@@ -1,40 +1,32 @@
 {
   "arrayOfProducts": [
     {
-      "name": "Nokia 8 Sirocco",
-      "price": "36998",
-      "imgUrl": "https://www.idgcdn.com.au/products/image/12673/angle/8/415x415/345908/",
-      "category": "Electronics",
-      "id": "1",
-      "qty": 5
-    },
-    {
       "name": "GLORIA HIGH-LOGO SNEAKER",
       "price": "919",
       "imgUrl": "https://guesseu.scene7.com/is/image/GuessEU/FLGLO4FAL12-BEIBR?wid=700&amp;fmt=jpeg&amp;qlt=80&amp;op_sharpen=0&amp;op_usm=1.0,1.0,5,0&amp;iccEmbed=0",
       "category": "Fashion",
-      "id": "2",
-      "qty": 4
+      "qty": "15",
+      "id": "2"
     },
     {
-      "imgUrl": "https://guesseu.scene7.com/is/image/GuessEU/HWVG6216060-TAN?wid=700&amp;fmt=jpeg&amp;qlt=80&amp;op_sharpen=0&amp;op_usm=1.0,1.0,5,0&amp;iccEmbed=0",
       "name": "CATE RIGID BAG",
+      "price": "445",
+      "imgUrl": "https://guesseu.scene7.com/is/image/GuessEU/HWVG6216060-TAN?wid=700&amp;fmt=jpeg&amp;qlt=80&amp;op_sharpen=0&amp;op_usm=1.0,1.0,5,0&amp;iccEmbed=0",
       "category": "Baggage",
-      "price": 440.5,
-      "id": "3",
-      "qty": 3
+      "qty": "12",
+      "id": "3"
     },
     {
-      "imgUrl": "http://guesseu.scene7.com/is/image/GuessEU/WC0001FMSWC-G5?wid=520&fmt=jpeg&qlt=80&op_sharpen=0&op_usm=1.0,1.0,5,0&iccEmbed=0",
       "name": "GUESS CONNECT WATCH",
+      "price": "678",
+      "imgUrl": "http://guesseu.scene7.com/is/image/GuessEU/WC0001FMSWC-G5?wid=520&fmt=jpeg&qlt=80&op_sharpen=0&op_usm=1.0,1.0,5,0&iccEmbed=0",
       "category": "Electronics",
-      "price": 438.9,
-      "id": "4",
-      "qty": 2
+      "qty": "9",
+      "id": "4"
     },
     {
       "name": "Nokia",
-      "price": "10009",
+      "price": "10000",
       "imgUrl": "https://www.idgcdn.com.au/products/image/12673/angle/8/415x415/345908/",
       "category": "Electronics",
       "qty": "5",
@@ -47,14 +39,6 @@
       "category": "Apparel",
       "qty": "5",
       "id": "11"
-    },
-    {
-      "id": "16",
-      "name": "iPhone 11",
-      "price": "123456",
-      "imgUrl": "https://www.idgcdn.com.au/products/image/12673/angle/8/415x415/345908/",
-      "category": "Electronics",
-      "qty": "6"
     }
   ],
   "login": [
@@ -64,6 +48,10 @@
     },
     {
       "id": "anjani@gmail.com",
+      "password": "12345Ab!"
+    },
+    {
+      "id": "anjani9876@gmail.com",
       "password": "12345Ab!"
     }
   ]

@@ -1,125 +1,75 @@
-  
-  /* .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 15px;
-    display: flex;
-  } */
-
-    .filter {
-        max-width: 500px;
-        margin: 0 auto;
-        padding: 15px;
-        max-height:100px;
-        
-      }
-      .filter h1 {
-        margin-left: 150px;
-        
-      }
-      .sct {
-        margin-left: 80px;
-        
-      }
-      .scts {
-        margin-left: 130px;
-        
-      }
-      .button {
-        
-        background-color:black;
-        border: none;
-        color: white;
-        padding: 5px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer; 
-      }
-  
-    /* .card {
-        float: left;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        max-width: 90%;
-        
-        text-align: center;
-        font-family: arial;
-
-        border: 2px solid #e7e7e7;
-        border-radius: 4px;
-        padding: .5rem;
-        
-      }
-      .cards { 
-        display: grid; 
-        grid-template-columns: repeat(4, 1fr); 
-        grid-auto-rows: auto; 
-        grid-gap: 1rem; 
-        width: calc(100% - 30px);
-      } */
-      
-      .price {
-        color: grey;
-        font-size: 22px;
-      }
-      
-      /* .card button {
-        border: none;
-        outline: 0;
-        padding: 12px;
-        color: white;
-        background-color: #000;
-        text-align: center;
-        cursor: pointer;
-        width: 100%;
-        font-size: 18px;
-      } */
-      
-      /* .card button:hover {
-        opacity: 0.7;
-      }
-
-      
-      @media screen and (max-width: 600px) {
-        .cards {
-           width: 100%;
-        }
-     } */
-
-     /* Float four columns side by side */
-.column {
-  float: left;
-  width: 25%; 
-  padding: 0 10px;
+.sctpl {
+  margin-left: 80px;
 }
 
-/* Remove extra left and right margins, due to padding */
-.row {margin: 0 -5px;}
+.searchbarpl {
+  width: initial;
+}
+       
+.buttonpl {
+  background-color:black;
+  border: none;
+  color: white;
+  padding: 5px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer; 
+}
+  
+.rowpl {
+  margin: 0 -5px;
+}
 
-/* Clear floats after the columns */
-.row:after {
+.rowpl:after {
   content: "";
   display: table;
   clear: both;
 }
 
+ /* Float four columns side by side */
+ .columnpl {
+  float: left;
+  width: 25%; 
+  padding: 10px 10px;
+}
+
+.cardpl {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+@media screen and (max-width: 1325px) and (min-width:1003px){
+  .columnpl {
+    width: 33.3%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 1002px) and (min-width:672px){
+  .columnpl {
+    width: 50%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
 /* Responsive columns */
-@media screen and (max-width: 600px) {
-  .column {
+@media screen and (max-width: 673px) {
+  .columnpl {
     width: 100%;
     display: block;
     margin-bottom: 20px;
   }
 }
 
-/* Style the counter cards */
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding: 16px;
-  text-align: center;
-  background-color: #f1f1f1;
-}
+
+
+
   
   
