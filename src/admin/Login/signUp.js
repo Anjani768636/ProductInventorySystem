@@ -1,8 +1,10 @@
 import React from 'react';
 import login from './login.jpeg';
 import './signUp.css';
-import { Link, Redirect } from 'react-router-dom';
+import Header from '../Header/header'
+import { Link } from 'react-router-dom';
 import Axios from 'axios';
+import { withRouter } from 'react-router-dom';
 
 class SignUp extends React.Component {
 	state={
@@ -56,14 +58,27 @@ class SignUp extends React.Component {
 		   alert("Passwaord and Confirm Password should match")
 	    }
 	}
+	mainpage(event){
+        this.props.history.push('/products')  
+    }
 	
 
     render() {
 
 		if(this.state.success)
 		{
-			this.setState({success:false})
-			return (<Redirect to={{pathname:"/products"}}></Redirect>)
+			//this.setState({success:false})
+			//return (<Redirect to={{pathname:"/products"}}></Redirect>)
+			return(
+				<div>
+                    <Header></Header>
+                <center>
+                    <h2>Account Created Successfully!!!</h2>
+                    <p>Click on OK to redirect to products page.</p>
+                    <button type="submit" className="buttonap" onClick={this.mainpage.bind(this)}>OK</button>
+                </center>
+                </div>
+			)
 		}
 
         return ( 
@@ -111,4 +126,4 @@ class SignUp extends React.Component {
     }
 }
  
-export default SignUp;
+export default withRouter (SignUp);

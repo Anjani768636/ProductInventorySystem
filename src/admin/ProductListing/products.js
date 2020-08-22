@@ -12,7 +12,9 @@ class Product extends React.Component {
         this.state = {
             products: [],
             productsList: [],
-            myid: 0 
+            myid: 0,
+            noData:false,
+            sortvalue:false
         }
     }
 
@@ -23,7 +25,6 @@ class Product extends React.Component {
     getAllProducts = () => {
         axios.get("http://localhost:3000/allProducts").then(response => {
         this.setState({ products: response.data, productsList: response.data })
-        
         }, error => {
             console.log(error)
         })
@@ -87,6 +88,9 @@ class Product extends React.Component {
         p.category.toLowerCase().includes(this.state.searchtext.toLowerCase()) ||
         p.quantity.toLowerCase().includes(this.state.searchtext.toLowerCase())
         )})
+        if(!prod.length){
+        this.setState({noData:true})   
+        }
         this.setState({products:prod})
         })
     }
@@ -96,8 +100,50 @@ class Product extends React.Component {
         x.className = "show";
         setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
       }
+
+      sorting(){
+          console.log("inside sorting")
+        const newlist=this.state.products;
+        if(this.state.sortvalue===false){
+            console.log("sort value false")
+            newlist.sort((a,b)=>
+                a.price - b.price)            
+            this.setState({products:newlist})
+            console.log(newlist)
+            return this.setState({sortvalue:true})
+        }
+        if(this.state.sortvalue===true){
+            console.log("sort value true")
+            console.log(newlist)
+            this.getAllProducts()
+            return this.setState({sortvalue:false})
+        }
+    }
  
     render() {
+        if(this.state.noData){
+            this.setState({noData:false})
+            return(
+                
+            <div>
+            <Header></Header>
+                <div>
+                    <div>
+                        <form>
+                            <div>
+                                <label>Search:</label>
+                                <input type="text" className="searchbarpl" onChange={this.searchHandle.bind(this)}/>
+                            </div> 
+                            <div>Product Not Found</div>  
+                        </form>
+                    </div>
+                    
+                </div>
+        </div>
+
+
+            );
+        }
 
         return (
          
@@ -110,6 +156,9 @@ class Product extends React.Component {
                                     <label>Search:</label>
                                     <input type="text" className="searchbarpl" onChange={this.searchHandle.bind(this)}/>
                                 </div> 
+                                <div>
+                                <button className="buttonpl" onClick={this.sorting.bind(this)}>Sort</button>
+                                </div>
                                 <div id="snackbar">Product Deleted Successfully!!!</div>  
                             </form>
                         </div>

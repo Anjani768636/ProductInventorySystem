@@ -10,7 +10,7 @@
     },
     {
       "name": "GLORIA HIGH-LOGO SNEAKER",
-      "price": "920",
+      "price": "400",
       "image": "https://guesseu.scene7.com/is/image/GuessEU/FLGLO4FAL12-BEIBR?wid=700&amp;fmt=jpeg&amp;qlt=80&amp;op_sharpen=0&amp;op_usm=1.0,1.0,5,0&amp;iccEmbed=0",
       "category": "Fashion",
       "quantity": "9",
@@ -44,6 +44,10 @@
     },
     {
       "id": "anjani9876@gmail.com",
+      "password": "12345Ab!"
+    },
+    {
+      "id": "testingr@gmail.com",
       "password": "12345Ab!"
     }
   ]
