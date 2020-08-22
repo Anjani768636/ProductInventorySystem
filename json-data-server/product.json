@@ -1,20 +1,36 @@
 {
   "allProducts": [
     {
-      "id": "vjLP84d",
-      "image": "logo.png",
-      "name": "jeans",
-      "price": "1000",
-      "quantity": "12",
-      "category": "clothes"
+      "name": "CATE RIGID BAG",
+      "price": "600",
+      "image": "https://guesseu.scene7.com/is/image/GuessEU/HWVG6216060-TAN?wid=700&amp;fmt=jpeg&amp;qlt=80&amp;op_sharpen=0&amp;op_usm=1.0,1.0,5,0&amp;iccEmbed=0",
+      "category": "Baggage",
+      "quantity": "9",
+      "id": "vjLP84d"
     },
     {
-      "id": "dHojtTr",
-      "image": "toys.jpg",
-      "name": "teddy",
-      "price": "220",
+      "name": "GLORIA HIGH-LOGO SNEAKER",
+      "price": "920",
+      "image": "https://guesseu.scene7.com/is/image/GuessEU/FLGLO4FAL12-BEIBR?wid=700&amp;fmt=jpeg&amp;qlt=80&amp;op_sharpen=0&amp;op_usm=1.0,1.0,5,0&amp;iccEmbed=0",
+      "category": "Fashion",
+      "quantity": "9",
+      "id": "dHojtTr"
+    },
+    {
+      "name": "GUESS CONNECT WATCH",
+      "price": "10000",
+      "image": "http://guesseu.scene7.com/is/image/GuessEU/WC0001FMSWC-G5?wid=520&fmt=jpeg&qlt=80&op_sharpen=0&op_usm=1.0,1.0,5,0&iccEmbed=0",
+      "category": "Electronics",
       "quantity": "5",
-      "category": "toys"
+      "id": "faJBNG4"
+    },
+    {
+      "name": "Nokia 8 Sirocco",
+      "price": "36998",
+      "image": "https://www.idgcdn.com.au/products/image/12673/angle/8/415x415/345908/",
+      "category": "Electronics",
+      "quantity": "5",
+      "id": "zBYx5qd"
     }
   ],
   "login": [

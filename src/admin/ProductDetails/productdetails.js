@@ -1,5 +1,4 @@
 import React from 'react';
-import '../ProductDetails/productdetails.css'
 import { withRouter } from 'react-router-dom';
 class ProductDetail extends React.Component {
     constructor(props) {

@@ -1,24 +1,26 @@
 import React from 'react';
-import '../AddProducts/content.css'
-import Axios from 'axios'
-import Navbar from '../Header/header';
+import Axios from 'axios';
+import './editproduct.css';
+import Header from '../Header/header'
 import { withRouter } from 'react-router-dom';
+
 class EditProduct extends React.Component {
-    constructor(props) {
+
+    constructor(props){
         super(props)
-        this.state = {
-            id: 0,
-            image: '',
-            name: '',
-            price: 0,
-            quantity: 0,
-            category: '',
-            status: '',
-            nameerror: '',
-           buttonStatus:false
+        this.state ={
+            id:0,
+            name:'',
+            price:0.0,
+            imgUrl:'',
+            category:'',
+            qty:0,
+            success:false
 
         }
     }
+
+
 
     componentWillMount() {
         if (this.props.location.state !== undefined) {
@@ -39,102 +41,134 @@ class EditProduct extends React.Component {
         }
     }
 
-
-    getName = (event) => {
-        this.setState({ name: event.target.value })
-        this.checkName()
-    }
-    getPrice = (event) => {
-        this.setState({ price: event.target.value })
-
-    }
-    getQuantity = (event) => {
-        this.setState({ quantity: event.target.value })
-
-    }
-    getCategory = (event) => {
-        this.setState({ category: event.target.value })
+    getName=(event)=>{
+        this.setState({name: event.target.value})
     }
 
-    checkName = () => {
-        let nameerror = ''
-        if (this.state.name.length < 2) {
-            nameerror = "* Give Valid Name"
-            this.setState({ nameError: nameerror ,buttonStatus:true})
-        } else {
-            this.setState({ nameError: "" ,buttonStatus:false})
-        }
+    getCategory=(event)=>{
+        this.setState({category: event.target.value})
     }
 
-     editProduct = () => {
+    getURL=(event)=>{
+        this.setState({image: event.target.value})
+    }
 
-        let productRequest = {
-            "id": this.state.id,
-            "image": this.state.image,
+    getPrice=(event)=>{
+        this.setState({price: event.target.value})
+    }
+
+    getQty=(event)=>{
+        this.setState({quantity: event.target.value})
+    }
+
+    getID=(event)=>{
+        this.setState({id: event.target.value})
+    }
+
+    editProductSubmit=(event)=>{
+
+        event.preventDefault()
+        let productRequestBody = {
             "name": this.state.name,
             "price": this.state.price,
-            "quantity": this.state.quantity,
-            "category": this.state.category
-
+            "image":this.state.image,
+            "category":this.state.category,
+            "quantity":this.state.quantity,
+            "id":this.state.id
         }
-      
-      
-        Axios.put("http://localhost:3000/allProducts/" + this.state.id, productRequest)
+
+        Axios.put("http://localhost:3000/allProducts/" + this.state.id, productRequestBody)
             .then(response => {
                 console.log(response)
-                this.props.history.push('/products')
+                this.setState({success:true})
+                //this.props.history.push('/products')
             }, error => {
                 console.log(error)
             })
-            
 
-        
+        }
+        mainpage(event){
+            this.props.history.push('/products')  
+        }
 
-
-    }
-    goBack(){
-        this.props.history.push('/products')
-    }
-    render() {
-        if (this.props.location.state === undefined) {
+    render() { 
+        if(this.state.success===true)
+        {
             return (
                 <div>
-                    <center>
-                        <h3>Product Not Available!!</h3><br></br>
-                        <button type="submit" onClick={this.goBack}>Go Back</button>
-                    </center>
+                    <Header></Header>
+                <center>
+                    <h2>Product Details Edited Successfully!!!</h2>
+                    <p>Click on OK to redirect to products page.</p>
+                    <button type="submit" className="buttonap" onClick={this.mainpage.bind(this)}>OK</button>
+                </center>
                 </div>
             )
         }
-        return (
-            <div >
-                <Navbar></Navbar>
-                <form onSubmit={this.editProduct}>
-                    <fieldset style={{ padding: '20px' }}>
-                        <center style={{ padding: '0px' }}>
-                            <h2>Update Product</h2>
+        return ( 
+            <div>
+                <Header></Header>
+            <div className="containerep">
+               <div>
+                   <form onSubmit={this.editProductSubmit.bind(this)}>
+                       <h2>Product Details:</h2>
+                       <div className="rowep">
+                            <div className="col-25ep">
+                                <label className="labelep">*Add Category:</label>
+                            </div>
+                            <div className="col-75ep">
+                                <input className="inputfieldep" type="text" value={this.state.category} id="category" onChange={this.getCategory} required/>
+                            </div>
+                       </div>
 
-                            <label >Product Name </label>
-                            <input type="text" value={this.state.name} onChange={this.getName} required style={{ marginLeft: '3px' }}></input>
-                            <div>{this.state.nameError}</div>
-                            <label >Price </label>
-                            <input type="number" value={this.state.price} onChange={this.getPrice} required min="1" style={{ marginLeft: '57px' }}  ></input>
-                            <br></br>
-                            <label >Quantity </label>
-                            <input type="number" value={this.state.quantity} onChange={this.getQuantity} required min="1" style={{ marginLeft: '42px' }}  ></input>
-                            <br></br>
-                            <label >Category </label>
-                            <input type="text" value={this.state.category} onChange={this.getCategory} readOnly style={{ marginLeft: '42px' }} ></input>
-                            <br></br>
+                       <div className="rowep">
+                            <div className="col-25ep">
+                                <label className="labelep">*Add Image URL:</label>
+                            </div>
+                            <div className="col-75ep">
+                                <input className="inputfieldep" type="text" id="imgUrl" value={this.state.image} onChange={this.getURL} required/>
+                            </div>
+                       </div>
 
-                            <button type="submit" disabled={this.state.buttonStatus}>Update</button><br></br>
-                        </center>
-                    </fieldset>
-                </form>
+                       <div className="rowep">
+                            <div className="col-25ep">
+                                <label className="labelep">*Product Name:</label>
+                            </div>
+                            <div className="col-75ep">
+                                <input className="inputfieldep" type="text" id="name" value={this.state.name} onChange={this.getName} required/>
+                            </div>
+                       </div>
 
+                       <div className="rowep">
+                            <div className="col-25ep">
+                                <label className="labelep">*Price:</label>
+                            </div>
+                            <div className="col-75ep">
+                                <input className="inputfieldep" type="0.25" id="price" pattern="^[1-9][0-9]+([\.,][0-9]+)?" title="Numbers greater than 0 and not preceded by 0" value={this.state.price} onChange={this.getPrice} required/>
+                            </div>
+                       </div>
+                       
+                       <div className="rowep">
+                            <div className="col-25ep">
+                                <label className="labelep">*Quantity:</label>
+                            </div>
+                            <div className="col-75ep">
+                                <input className="inputfieldep" type="number" min="1" title="Numbers greater than 0" value={this.state.quantity} onChange={this.getQty} required/>
+                            </div>
+                       </div>
+                       <div>
+                            <button className="buttonep">Submit</button>
+                       </div>  
+                   </form>
+               </div>
             </div>
-        );
+            </div>
+         );
+
     }
+
 }
+
+ 
 
 export default withRouter (EditProduct);

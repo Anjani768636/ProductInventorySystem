@@ -11,6 +11,7 @@ class Header extends React.Component {
                 <a href="#default" className="logo">Product Inventory System</a>
 
                 <div className="header-right">
+                    <Link to='/addproducts'>Add Products</Link>
                     <Link to='/products'>Products</Link>
                     <Link to='/dashboard'>Dashboard</Link>
                     <Link to='/'>Logout</Link>
