@@ -91,6 +91,9 @@ class Product extends React.Component {
         if(!prod.length){
         this.setState({noData:true})   
         }
+        else{
+            this.setState({noData:false})
+        }
         this.setState({products:prod})
         })
     }
@@ -122,7 +125,7 @@ class Product extends React.Component {
  
     render() {
         if(this.state.noData){
-            this.setState({noData:false})
+            
             return(
                 
             <div>

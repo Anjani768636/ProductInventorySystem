@@ -9,7 +9,6 @@ class AddProduct extends React.Component {
     constructor(props){
         super(props)
         this.state ={
-            id:0,
             name:'',
             price:0.0,
             image:'',
@@ -39,10 +38,6 @@ class AddProduct extends React.Component {
 
     getQty=(event)=>{
         this.setState({quantity: event.target.value})
-    }
-
-    getID=(event)=>{
-        this.setState({id: event.target.value})
     }
 
     addProduct(){
